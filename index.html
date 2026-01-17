@@ -2,125 +2,252 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Quick Launch</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Quick Launch Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 40px;
-            background-color: #ffffff; /* White background */
-            color: #000000; /* Black text */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            --card-bg: #ffffff;
+            --primary: #2563eb;
+            --text-dark: #0f172a;
+            --border-light: #e5e7eb;
         }
 
+        /* 🔒 GLOBAL FIXES */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden !important;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            display: flex;
+        }
+
+        .container {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+        }
+
+        /* HEADER */
+        .header {
+            color: #ffffff;
+            margin-bottom: 12px;
+            flex-shrink: 0;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .header p {
+            margin: 6px 0 0;
+            color: #cbd5e1;
+        }
+
+        /* SEARCH */
+        .search-box {
+            margin: 16px 0 18px;
+            flex-shrink: 0;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+        }
+
+        /* CONTENT */
+		.content {
+			flex: 1;
+			min-height: 0;          /* ⬅️ MOST IMPORTANT LINE */
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+
+		.content::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+
+		@supports not (overflow-y: overlay) {
+			.content {
+				overflow-y: auto;
+			}
+		}
         .section {
-            margin-bottom: 40px;
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
         }
 
         .section h2 {
-            font-size: 20px;
-            border-bottom: 2px solid #bdbdbd;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-            color: #000000;
+            margin: 0 0 16px;
+            font-size: 18px;
+            font-weight: 600;
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+            color: var(--text-dark);
         }
 
         .links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 14px;
         }
 
         .links a {
-            padding: 12px 20px;
-            background-color: #d4d4d4; /* Grey button background */
-            color: #000000; /* Black link text */
+            padding: 14px;
+            background: #f8fafc;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            text-align: center;
             text-decoration: none;
-            border-radius: 6px;
+            color: var(--text-dark);
             font-weight: 500;
-            transition: background-color 0.3s ease;
+            transition: all 0.25s ease;
         }
 
         .links a:hover {
-            background-color: #3cb371; /* Darker grey on hover */
+            background: var(--primary);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
         }
 
-        @media (max-width: 600px) {
-            .links a {
-                width: 100%;
-                text-align: center;
-            }
+        .hidden {
+            display: none !important;
         }
+		
     </style>
 </head>
+
 <body>
+<div class="container">
 
-    <div class="section">
-        <h2>Common Tools</h2>
-        <div class="links">
-           <a href='https://acrobat.adobe.com/link/home/?locale=en-US&x_api_client_id=loggedout_home&x_api_client_location=adobe' target='_blank'>Adobe Acrobat</a>
-            <a href='https://learn.be10x.in/login/' target='_blank'>Be10x</a>
-            <a href='https://academy.careerbrandinghub.com/web/login' target='_blank'>CBH</a>
-            <a href='https://www.ess.adp.in/ess4/' target='_blank'>ESS</a>
-            <a href='https://gupshup.greythr.com/uas/portal/auth/login' target='_blank'>GreytHR</a>
-            <a href='http://uanmembers.epfoservices.in/index.php' target='_blank'>EPF Account</a>
-            <a href='http://thehackernews.com/' target='_blank'>Hackers News</a>
-			<a href='https://students.masaischool.com/' target='_blank'>Masai Bits BA</a>
-            <a href='https://skp.school.ventture.com/login' target='_blank'>HIKERS</a>
-            <a href='https://skp-university.teachable.com/' target='_blank'>SCALING</a>
-            <a href='https://www.udemy.com/join/login-popup/' target='_blank'>Udemy</a>
-            <a href='https://gupshup.udemy.com/' target='_blank'>Udemy GS</a>
-            <a href='https://www.mhada.gov.in/en/content/mill-workers-housing-lottery-2020' target='_blank'>Mill Workers</a>
-            <a href='https://millworker.mhada.gov.in/MillWorkerOnlineEnrollment/' target='_blank'>Mill Workers Login</a>
-            <a href='https://www.sebipaclrefund.co.in/' target='_blank'>PACL</a>
-        </div>
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by tool name or link (example: chatgpt, google, tradingview)"
+            onkeyup="filterLinks()"
+        />
     </div>
 
-    <div class="section">
-        <h2>AI Tools</h2>
-        <div class="links">
-            <a href='https://chatgpt.com/c/67a6e7a6-e7dc-800a-be56-ac4e55fc9f78' target='_blank'>ChatGPT</a>
-            <a href='https://claude.ai/chat/b98f0ad1-fe52-46ba-8d3e-746766be0bd7' target='_blank'>Claude</a>
-            <a href='https://gemini.google.com/app' target='_blank'>Gemini</a>
-            <a href='https://app.napkin.ai/page/CgoiCHByb2Qtb25lEiwKBFBhZ2UaJGMyZGU4MTczLWU1OWMtNDQwYS04YmRkLWM3ODVkZGM1N2ZlMA' target='_blank'>Napkin AI</a>
-        </div>
-    </div>
+    <div class="content">
 
-    <div class="section">
-        <h2>Mails & Drives</h2>
-        <div class="links">
-            <a href='https://drive.google.com/drive/my-drive' target='_blank'>Drive</a>
-            <a href='https://mail.google.com/mail/u/0/#inbox' target='_blank'>Gmail</a>
-            <a href='https://outlook.live.com/mail/0/' target='_blank'>Outlook</a>
-            <a href='https://onedrive.live.com/?id=root&cid=1180B01FC533EFA9&qt=mru' target='_blank'>Drive Outlook</a> 
+        <div class="section">
+            <h2>Common Tools</h2>
+            <div class="links">
+                <a href="https://acrobat.adobe.com/" target="_blank">Adobe Acrobat</a>
+                <a href="https://learn.be10x.in/login/" target="_blank">Be10x</a>
+                <a href="https://academy.careerbrandinghub.com/web/login" target="_blank">CBH</a>
+                <a href="https://www.ess.adp.in/ess4/" target="_blank">ESS</a>
+                <a href="https://gupshup.greythr.com/" target="_blank">GreytHR</a>
+                <a href="http://uanmembers.epfoservices.in/" target="_blank">EPF Account</a>
+                <a href="http://thehackernews.com/" target="_blank">Hacker News</a>
+                <a href="https://www.udemy.com/" target="_blank">Udemy</a>
+				<a href='https://gupshup.udemy.com/' target='_blank'>Udemy GS</a>
+				<a href='https://www.mhada.gov.in/en/content/mill-workers-housing-lottery-2020' target='_blank'>Mill Workers</a>
+				<a href='https://millworker.mhada.gov.in/MillWorkerOnlineEnrollment/' target='_blank'>Mill Workers Login</a>
+				<a href='https://www.sebipaclrefund.co.in/' target='_blank'>PACL</a>
+            </div>
         </div>
-    </div>
 
-    <div class="section">
-        <h2>English</h2>
-        <div class="links">
-            <a href='https://bit.ly/inner_circle_recordings' target='_blank'>Inner Circle</a>
-            <a href='https://bit.ly/soft_skills_class_recordings' target='_blank'>Soft Skills</a>
-            <a href='https://bit.ly/grammar_class_recordings' target='_blank'>Grammar Class</a>
-            <a href='https://bit.ly/morning_club_recordings' target='_blank'>Morning Club</a>
+        <div class="section">
+            <h2>AI Tools</h2>
+            <div class="links">
+                <a href="https://chatgpt.com/" target="_blank">ChatGPT</a>
+                <a href="https://claude.ai/" target="_blank">Claude</a>
+                <a href="https://gemini.google.com/" target="_blank">Gemini</a>
+                <a href="https://app.napkin.ai/" target="_blank">Napkin AI</a>
+            </div>
         </div>
-    </div>
+		
+		<div class="section">
+			<h2>English</h2>
+			<div class="links">
+				<a href='https://bit.ly/inner_circle_recordings' target='_blank'>Inner Circle</a>
+				<a href='https://bit.ly/soft_skills_class_recordings' target='_blank'>Soft Skills</a>
+				<a href='https://bit.ly/grammar_class_recordings' target='_blank'>Grammar Class</a>
+				<a href='https://bit.ly/morning_club_recordings' target='_blank'>Morning Club</a>
+			</div>
+		</div>
 
-    <div class="section">
-        <h2>Trading</h2>
-        <div class="links">
-            <a href='https://coindcx.com/futures/B-BTC_USDT' target='_blank'>CoinDCX</a>
-            <a href='https://www.delta.exchange/app/futures/trade/ETH/ETHUSD' target='_blank'>Delta</a>
-            <a href='https://trade.fyers.in' target='_blank'>FYERS</a>
-            <a href='https://in.investing.com/indices/india-50-futures-chart?cid=101810' target='_blank'>INVESTING</a>
-			<a href='https://app.mfcentral.com/investor/signin' target='_blank'>MF CENTRAL</a>
-            <a href='https://opstra.definedge.com/strategy-builder' target='_blank'>Opstra</a>
-            <a href='https://web.sensibull.com/login' target='_blank'>Sensibull</a>
-            <a href='https://chart.tradeclue.com/login' target='_blank'>TradeClue</a>
-            <a href='https://tradeterminal.tradingcampus.in/courses.php' target='_blank'>Trading Campus</a>
-            <a href='https://in.tradingview.com/chart/UxK4BJgu/?symbol=CAPITALCOM%3ANATURALGAS' target='_blank'>TradingView</a>
-            <a href='https://www.google.com' target='_blank'>Test</a>
+        <div class="section">
+            <h2>Mails & Drives</h2>
+            <div class="links">
+                <a href="https://drive.google.com/" target="_blank">Google Drive</a>
+                <a href="https://mail.google.com/" target="_blank">Gmail</a>
+                <a href="https://outlook.live.com/" target="_blank">Outlook</a>
+                <a href="https://onedrive.live.com/" target="_blank">OneDrive</a>
+            </div>
         </div>
+
+        <div class="section">
+            <h2>Trading</h2>
+            <div class="links">
+                <a href="https://trade.fyers.in/" target="_blank">FYERS</a>
+                <a href="https://in.tradingview.com/" target="_blank">TradingView</a>
+                <a href="https://web.sensibull.com/" target="_blank">Sensibull</a>
+                <a href="https://opstra.definedge.com/" target="_blank">Opstra</a>
+				<a href='https://web.sensibull.com/login' target='_blank'>Sensibull</a>
+				<a href='https://chart.tradeclue.com/login' target='_blank'>TradeClue</a>
+				<a href='https://tradeterminal.tradingcampus.in/courses.php' target='_blank'>Trading Campus</a>
+				<a href='https://in.tradingview.com/chart/UxK4BJgu/?symbol=CAPITALCOM%3ANATURALGAS' target='_blank'>TradingView</a>
+            </div>
+        </div>
+
     </div>
+</div>
+
+<script>
+function filterLinks() {
+    const query = document.getElementById("searchInput").value.toLowerCase();
+    const sections = document.querySelectorAll(".section");
+
+    sections.forEach(section => {
+        let visible = 0;
+        const links = section.querySelectorAll("a");
+
+        links.forEach(link => {
+            const text = link.innerText.toLowerCase();
+            const href = link.href.toLowerCase();
+
+            if (text.includes(query) || href.includes(query)) {
+                link.classList.remove("hidden");
+                visible++;
+            } else {
+                link.classList.add("hidden");
+            }
+        });
+
+        section.style.display = visible > 0 ? "block" : "none";
+    });
+}
+</script>
+
 </body>
 </html>
